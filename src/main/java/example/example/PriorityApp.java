@@ -30,17 +30,19 @@ public class PriorityApp {
 		// Create the actors
 		for (Integer number : numbers){
 
+			final MutableComparable<Integer> mutableComparable = new MutableComparable<Integer>(number);
 			BasicActor<Void, Void> actor = new BasicActor<Void, Void>("Actor " + number) {
+				private final MutableComparable<Integer> c = mutableComparable;
 
 				@Override
 				protected Void doRun() throws InterruptedException, SuspendExecution {
 					// TODO Auto-generated method stub
-					System.out.println(this.getName());
+					System.out.println(this.getName() + " with order " + this.c.getComparable());
 					return null;
 				}
 			};
 
-			fiberExecutorScheduler.setComparable(number);
+			fiberExecutorScheduler.setComparable(mutableComparable);
 			actor.spawn(fiberfactory);
 		}
 
