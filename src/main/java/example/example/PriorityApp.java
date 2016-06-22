@@ -3,6 +3,7 @@ package example.example;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import co.paralleluniverse.actors.BasicActor;
 import co.paralleluniverse.fibers.FiberFactory;
@@ -38,7 +39,8 @@ public class PriorityApp {
 				@Override
 				protected Void doRun() throws InterruptedException, SuspendExecution {
 					// TODO Auto-generated method stub
-					mutableComparable.setComparable(1000 - mutableComparable.getComparable());
+					Random r = new Random();
+					mutableComparable.setComparable(r.nextInt());
 					Strand.sleep(1000);
 					Thread.sleep(1);
 					System.out.println(this.getName() + " with order " + this.c.getComparable());
