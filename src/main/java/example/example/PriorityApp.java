@@ -7,6 +7,7 @@ import java.util.List;
 import co.paralleluniverse.actors.BasicActor;
 import co.paralleluniverse.fibers.FiberFactory;
 import co.paralleluniverse.fibers.SuspendExecution;
+import co.paralleluniverse.strands.Strand;
 import example.example.quasar.PriorityFiberExecutorScheduler;
 
 public class PriorityApp {
@@ -37,6 +38,9 @@ public class PriorityApp {
 				@Override
 				protected Void doRun() throws InterruptedException, SuspendExecution {
 					// TODO Auto-generated method stub
+					mutableComparable.setComparable(1000 - mutableComparable.getComparable());
+					Strand.sleep(1000);
+					Thread.sleep(1);
 					System.out.println(this.getName() + " with order " + this.c.getComparable());
 					return null;
 				}
