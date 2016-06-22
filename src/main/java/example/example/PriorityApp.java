@@ -7,12 +7,12 @@ import java.util.List;
 import co.paralleluniverse.actors.BasicActor;
 import co.paralleluniverse.fibers.FiberFactory;
 import co.paralleluniverse.fibers.SuspendExecution;
-import example.example.quasar.QFiberExecutorScheduler;
+import example.example.quasar.PriorityFiberExecutorScheduler;
 
 public class PriorityApp {
 
 	public static void main(String[] args) {
-		QFiberExecutorScheduler fiberExecutorScheduler = new QFiberExecutorScheduler("Prioritized Fiber Executor Scheduler");
+		PriorityFiberExecutorScheduler fiberExecutorScheduler = new PriorityFiberExecutorScheduler("Prioritized Fiber Executor Scheduler");
 		FiberFactory fiberfactory = fiberExecutorScheduler;
 
 

@@ -9,7 +9,7 @@ import co.paralleluniverse.fibers.FiberExecutorScheduler;
 import co.paralleluniverse.fibers.FiberSchedulerTask;
 import co.paralleluniverse.strands.SuspendableCallable;
 
-public class QFiberExecutorScheduler extends FiberExecutorScheduler {
+public class PriorityFiberExecutorScheduler extends FiberExecutorScheduler {
 
 	private static final int parallelism = Runtime.getRuntime().availableProcessors();
 	private static final Comparator<? super Runnable> comparator = (a, b) -> {
@@ -22,7 +22,7 @@ public class QFiberExecutorScheduler extends FiberExecutorScheduler {
 
 	private Comparable comparable;
 
-	public QFiberExecutorScheduler(String name) {
+	public PriorityFiberExecutorScheduler(String name) {
 		super(name, new ThreadPoolExecutor(parallelism, parallelism, Long.MAX_VALUE, TimeUnit.NANOSECONDS,
 				new PriorityBlockingQueue<Runnable>(11, comparator)));
 	}
